@@ -3,7 +3,14 @@
 var app = require('express')();
 var http = require('http').createServer(app);
 const express = require('express')
-var io = require('socket.io')(http);
+var io = require('socket.io')(http,  {
+    cors: {
+      origin: "http://localhost:4200",
+      methods: ["GET", "POST"],
+      credentials: true
+    }
+  },
+  {'transports': ['websocket', 'polling']});
 var cors = require('cors')
 
 //Var to store that chat sessions
@@ -34,6 +41,7 @@ app.use(express.urlencoded({extended: true}));
 //Connection is a reserved event type!
 //We can create a callback to handle communication with one socket or used to broadcast to multiple sockets
 io.on("connection", socket => {
+    console.log("new connection detected from socket", socket.id)
     let previousId;
 
     //Handling leaving and joining rooms
@@ -48,27 +56,45 @@ io.on("connection", socket => {
     };
   
     //When the client emits the getChat
-    //
-    socket.on("getchat", chatId => {
-      safeJoin(chatId);
-      socket.emit("chatument", chats[chatId]);
+    //Joins the chatroom with a given id and returns the chat to the initiating clietn
+    socket.on("getChat", chatId => {
+        console.log(chats, "are the chats")
+     //Joining the chat room with a given if    
+      safeJoin(chatId); 
+      //Returning the chat to the starting client
+      console.log("emitting", chats[chatId])
+      socket.emit("chat", chats[chatId]);
     });
   
-    socket.on("addchat", chat => {
+
+    //When we recieve a chat
+    //The socket joins the room of a given id is broadcasted to anyone in the same room
+    socket.on("addChat", chat => {
       chats[chat.id] = chat;
       safeJoin(chat.id);
+      //Letting everyone know that is connected to the socket that there is a new chat
+      
+      //Sending the chat to everyone
       io.emit("chat", Object.keys(chats));
+
+      //Sending the chat to the client
       socket.emit("chat", chat);
     });
   
-    socket.on("editchat", chat => {
+
+    //Anytime a client enters information the chat will update the chats document
+    socket.on("editChat", chat => {
+
       chats[chat.id] = chat;
-      socket.to(chat.id).emit("chatument", chat);
+
+      //Sending the updated chat to the clients that are in a given room
+      socket.to(chat.id).emit("chat", chat);
     });
   
     io.emit("chats", Object.keys(chats));
   });
 
+  http.listen(process.env.SOCKET_PORT);
 
 
 
@@ -84,5 +110,5 @@ app.use('/', express.static('./static'));
 
 
 //PORT
-port = process.env.PORT || 5000; //If the port is outline in the env file use that
-app.listen(port,() => console.log(`Listening on port ${port}`))
+// port = process.env.PORT || 5002; //If the port is outline in the env file use that
+// app.listen(port,() => console.log(`Listening on port ${port}`))
