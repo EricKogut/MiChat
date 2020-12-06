@@ -1,23 +1,12 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 
-<h1>Hello and Welcome to the chat app!</h1>
-<h1>Create or join a chat below</h1>
-<div>
-  <input #usernameBox id="search-box" (input)="handleUserName(usernameBox.value)" placeholder="What should people call you?" />
 
-</div>
-<input #createRoomNameBox id="search-box" (input)="handleJoinRoomName(createRoomNameBox.value)" placeholder="Join the chat room Name" />
-<button (click) = "joinRoom()">Join</button>
-
-<!-- <input #joinRoomNameBox id="search-box" (input)="handleCreateRoomName(joinRoomNameBox.value)" placeholder="Create room by name " /> -->
-<button (click) = "createRoom()"> Create</button>
 
 
 
 
     <!-- <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <title>Shell-Hacks</title>
     <!-- <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/Article-List.css">
@@ -30,7 +19,7 @@
 <body>
     <div>
         <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-            <div class="container"><a class="navbar-brand" href="#">Blink</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="container"><a class="navbar-brand" href="#">Mï Chat</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse"
                     id="navcol-1">
                     <ul class="nav navbar-nav mr-auto">
@@ -42,68 +31,57 @@
     <div class="article-list">
         <div class="container">
             <div class="intro">
-                <h2 class="text-center">Introducing Blink!</h2>
-                <p class="text-center">Helping you to apply for the jobs that fit you!</p>
+                <h2 class="text-center">Introducing Mï Chat!</h2>
+                <p class="text-center">The worlds GREATEST messaging app!</p>
             </div>
             <div class="row articles">
                 <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="assets/img/Boy-with-Tablet-Illustration.jpg"></a>
                     <h3 class="name">Step One</h3>
-                    <p class="description"> Upload your resume to Blink...</p><a href="#" class="action"><i class="fa fa-arrow-circle-right"></i></a></div>
+                    <p class="description"> Enter your usersame...</p><a href="#" class="action"><i class="fa fa-arrow-circle-right"></i></a></div>
                 <div
                     class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="assets/img/Computer-Workspace-Illustration-1.jpg"></a>
                     <h3 class="name">Step Two</h3>
-                    <p class="description">Our Website analyzes your resume to see where your strengths are. We show you the best jobs to apply for.</p><a href="#" class="action"><i class="fa fa-arrow-circle-right"></i></a></div>
+                    <p class="description">Join an exisitng chat or create a new one</p><a href="#" class="action"><i class="fa fa-arrow-circle-right"></i></a></div>
             <div
                 class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="assets/img/Email-Marketing-Illustration-1.jpg"></a>
                 <h3 class="name">Step Three</h3>
-                <p class="description">Land that interview and get the job!</p><a href="#" class="action"><i class="fa fa-arrow-circle-right"></i></a></div>
+                <p class="description">Talk with whoever, whenever!</p><a href="#" class="action"><i class="fa fa-arrow-circle-right"></i></a></div>
     </div>
     </div>
     </div>
-    <div class="highlight-phone">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="intro">
-                        <h2>Using Blink...</h2>
-                        <p> Get started today</p><a class="btn btn-outline-info" role="button" href="#">Learn more</a></div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="d-none d-md-block iphone-mockup"><img src="assets/img/iphone.svg" class="device">
-                        <div class="screen">
-                            <img src="assets/img/screen-content-iphone-6.jpg">
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Submit your Resume!</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                      <label for="exampleFormControlFile1"></label>
-                      <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                    </div>
-                  </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-outline-info">Submit</button>
-            </div>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <h6>Hello and Welcome to the Mï Chat!</h6>
+          <h3>Create or join a chat below</h3>
+          <div>
+            <input #usernameBox id="search-box" (input)="handleUserName(usernameBox.value)" placeholder="Enter your username" />
+
+            <hr>
+          </div>
+          <input #createRoomNameBox id="search-box" (input)="handleJoinRoomName(createRoomNameBox.value)" placeholder="Join the chat room Name" />
+          <button (click) = "joinRoom()" type="button" data-dismiss="modal">Join</button>
+
+
+
+          <input #joinRoomNameBox id="search-box" (input)="handleCreateRoomName(joinRoomNameBox.value)" placeholder="Create room by name " />
+          <button  (click) = "createRoom()" type="button" data-dismiss="modal"> Create</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
           </div>
         </div>
       </div>
+    </div>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>

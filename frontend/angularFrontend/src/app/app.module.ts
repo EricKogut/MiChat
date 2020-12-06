@@ -11,7 +11,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ChatListComponent } from './chat-list/chat-list.component';
 import { ChatComponent } from './chat/chat.component';
 import { HelloWorldComponent } from './hello-world/hello-world.component';
 import { LandingComponent } from './landing/landing.component';
@@ -28,7 +27,6 @@ const myRoutes: Routes =  [
 @NgModule({
   declarations: [
     AppComponent,
-    ChatListComponent,
     ChatComponent,
     HelloWorldComponent,
     LandingComponent,

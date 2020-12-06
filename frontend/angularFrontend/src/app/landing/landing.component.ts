@@ -27,7 +27,7 @@ export class LandingComponent implements OnInit {
   }
 
   createRoom(){
-    localStorage.setItem('name',this.joinRoomName);
+    localStorage.setItem('name',this.createRoomName);
     localStorage.setItem('username',this.username);
     localStorage.setItem('function',"create");
     this.router.navigate(['chat']);
