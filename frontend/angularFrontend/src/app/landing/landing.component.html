@@ -1,10 +1,10 @@
 <h1>Hello and Welcome to the chat app!</h1>
 <h1>Create or join a chat below</h1>
-<input #createRoomNameBox id="search-box" (input)="handleJoinRoomName(createRoomNameBox.value)" placeholder="Create the chat room Name" />
-<button>Join</button>
+<input #createRoomNameBox id="search-box" (input)="handleJoinRoomName(createRoomNameBox.value)" placeholder="Join the chat room Name" />
+<button (click) = "joinRoom()">Join</button>
 
-<input #joinRoomNameBox id="search-box" (input)="handleCreateRoomName(joinRoomNameBox.value)" placeholder="Join room by name " />
-<button> Create</button>
+<!-- <input #joinRoomNameBox id="search-box" (input)="handleCreateRoomName(joinRoomNameBox.value)" placeholder="Create room by name " /> -->
+<button (click) = "createRoom()"> Create</button>
 
 
 

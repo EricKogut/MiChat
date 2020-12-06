@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import {ChatService} from '../chat.service';
 import {Subscription} from 'rxjs';
 import {Chat} from '../models/chat';
@@ -15,9 +15,16 @@ export class ChatComponent implements OnInit , OnDestroy {
   constructor(private chatService: ChatService) { }
 
   ngOnInit() {
-    console.log("")
+    if(localStorage.getItem("function") == "join"){
+      this.loadChat(localStorage.getItem("name"));
+    }
+
+    if(localStorage.getItem("function") == "create"){
+      this.newChat(localStorage.getItem("name"));
+    }
+
     this._chatSub = this.chatService.currentChat.pipe(
-      startWith({ id: '', message: 'Select an existing document or create a new one to get started'})
+      startWith({ id: localStorage.getItem("name"), message: 'Select an existing document or create a new one to get started'})
     ).subscribe(chat => this.chat = chat);
   }
 
@@ -26,6 +33,20 @@ export class ChatComponent implements OnInit , OnDestroy {
   }
 
   editChat() {
+    console.log("attempting to edit the chat for within the component", this.chat)
     this.chatService.editChat(this.chat);
   }
+
+  loadChat(id: string) {
+    this.chatService.getChat(id);
+  }
+
+  newChat(input) {
+    console.log("newChat has been triggered")
+    this.chatService.newChatName(input);
+  }
+
+
+
+
 }

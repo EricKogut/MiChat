@@ -25,8 +25,11 @@ export class ChatService {
 
   newChat() {
     console.log("creating new chat from teh service")
-
     this.socket.emit('addChat', { id: this.chatId(), chat: '' });
+  }
+  newChatName(input) {
+    console.log("creating new chat from teh service", input)
+    this.socket.emit('addChat', { id: input, chat: '' });
   }
 
   editChat(chat: Chat) {

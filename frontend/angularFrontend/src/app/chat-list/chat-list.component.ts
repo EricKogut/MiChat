@@ -19,8 +19,8 @@ export class ChatListComponent implements OnInit, OnDestroy {
   constructor(private chatService: ChatService) { }
 
   ngOnInit() {
+
     this.chats = this.chatService.chats;
-    console.log(this.chats, "are the ccurrent chats")
     //Getting the chat changes su
     this._chatSub = this.chatService.currentChat.subscribe(chat =>{
       console.log("chat", chat, "returned from the service")

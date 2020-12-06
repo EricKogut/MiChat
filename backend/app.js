@@ -58,10 +58,14 @@ io.on("connection", socket => {
     //When the client emits the getChat
     //Joins the chatroom with a given id and returns the chat to the initiating clietn
     socket.on("getChat", chatId => {
-        console.log(chats, "are the chats")
+      //
+    console.log("getting the chat with id", chatId)
+    console.log(chats, "are the current chats")
      //Joining the chat room with a given if    
       safeJoin(chatId); 
-      //Returning the chat to the starting client
+
+
+      //Returning the chat to the starting client 
       console.log("emitting", chats[chatId])
       socket.emit("chat", chats[chatId]);
     });
@@ -70,6 +74,8 @@ io.on("connection", socket => {
     //When we recieve a chat
     //The socket joins the room of a given id is broadcasted to anyone in the same room
     socket.on("addChat", chat => {
+      console.log("adding chat", chat)
+      
       chats[chat.id] = chat;
       safeJoin(chat.id);
       //Letting everyone know that is connected to the socket that there is a new chat
@@ -84,6 +90,7 @@ io.on("connection", socket => {
 
     //Anytime a client enters information the chat will update the chats document
     socket.on("editChat", chat => {
+      console.log("editing chat", chat)
 
       chats[chat.id] = chat;
 

@@ -13,9 +13,12 @@ import { ChatListComponent } from './chat-list/chat-list.component';
 import { ChatComponent } from './chat/chat.component';
 import { HelloWorldComponent } from './hello-world/hello-world.component';
 import { LandingComponent } from './landing/landing.component';
+import { ChatRoomComponent } from './chat-room/chat-room.component';
 
 const myRoutes: Routes =  [
   { path: '', component: LandingComponent },
+  { path: 'helloworld', component: HelloWorldComponent },
+  { path: 'chatroom', component: ChatComponent },
   { path: 'chat', component: ChatComponent }
 ]
 
@@ -26,7 +29,8 @@ const myRoutes: Routes =  [
     ChatListComponent,
     ChatComponent,
     HelloWorldComponent,
-    LandingComponent
+    LandingComponent,
+    ChatRoomComponent
   ],
   imports: [
     BrowserModule,

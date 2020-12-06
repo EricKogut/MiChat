@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  constructor( private router: Router) { }
   joinRoomName;
   createRoomName;
   ngOnInit(): void {
@@ -16,6 +17,18 @@ export class LandingComponent implements OnInit {
 
   handleJoinRoomName(term: string): void {this.joinRoomName = term.replace(/[<={}()>/\\]/gi, "")}
   handleCreateRoomName(term: string): void {this.createRoomName = term.replace(/[<={}()>/\\]/gi, "")}
+
+  joinRoom(){
+    localStorage.setItem('name',this.joinRoomName);
+    localStorage.setItem('function',"join");
+    this.router.navigate(['chat']);
+  }
+
+  createRoom(){
+    localStorage.setItem('name',this.joinRoomName);
+    localStorage.setItem('function',"create");
+    this.router.navigate(['chat']);
+  }
 
 }
 
