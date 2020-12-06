@@ -1,0 +1,12 @@
+<div class = "outside-box">
+<div *ngFor = "let message of messages">
+  <h5 class = "username">{{message.user}} </h5>
+  <h3>{{message.message}} </h3>
+</div>
+
+<textarea [(ngModel)]='chat.message'  placeholder='Enter your message'></textarea>
+<button class= "submit" (click) = "editChat()">Send Message</button>
+</div>
+
+
+
