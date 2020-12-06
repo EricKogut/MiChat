@@ -1,5 +1,9 @@
 <h1>Hello and Welcome to the chat app!</h1>
 <h1>Create or join a chat below</h1>
+<div>
+  <input #usernameBox id="search-box" (input)="handleUserName(usernameBox.value)" placeholder="What should people call you?" />
+
+</div>
 <input #createRoomNameBox id="search-box" (input)="handleJoinRoomName(createRoomNameBox.value)" placeholder="Join the chat room Name" />
 <button (click) = "joinRoom()">Join</button>
 

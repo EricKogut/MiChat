@@ -1,3 +1,10 @@
-<textarea [(ngModel)]='chat.message' (keyup)='editChat()' placeholder='Start typing...'></textarea>
-<button (click) = "editChat"></button>
+<div *ngFor = "let message of messages">
+  <h4>{{message.user}} </h4>
+  <h1>{{message.message}} </h1>
+</div>
+
+<textarea [(ngModel)]='chat.message'  placeholder='Enter your message'></textarea>
+<button class= "submit" (click) = "editChat()">Send Mesgae</button>
+
+
 

@@ -11,10 +11,15 @@ import {startWith} from 'rxjs/operators';
 })
 export class ChatComponent implements OnInit , OnDestroy {
   chat: Chat;
+
+
+  messages = [];
   private _chatSub: Subscription;
   constructor(private chatService: ChatService) { }
 
   ngOnInit() {
+
+    this.chat = { id: localStorage.getItem("name"), message: 'Welcome to chat room'+localStorage.getItem("name"), user:localStorage.getItem("name")}
     if(localStorage.getItem("function") == "join"){
       this.loadChat(localStorage.getItem("name"));
     }
@@ -24,8 +29,13 @@ export class ChatComponent implements OnInit , OnDestroy {
     }
 
     this._chatSub = this.chatService.currentChat.pipe(
-      startWith({ id: localStorage.getItem("name"), message: 'Select an existing document or create a new one to get started'})
-    ).subscribe(chat => this.chat = chat);
+      startWith({ id: localStorage.getItem("name"), message: 'Welcome to chat room'+localStorage.getItem("name"), user:localStorage.getItem("username")})
+    ).subscribe(chat =>{
+      console.log("updating chat")
+      this.messages.push(chat);
+      console.log(chat, "is the current chat")
+      //this.chat = chat;
+    } );
   }
 
   ngOnDestroy() {
@@ -34,10 +44,14 @@ export class ChatComponent implements OnInit , OnDestroy {
 
   editChat() {
     console.log("attempting to edit the chat for within the component", this.chat)
+    this.chat.user =  localStorage.getItem("username")
+    this.messages.push(this.chat);
     this.chatService.editChat(this.chat);
+    this.chat = {id:this.chat.id, message:"", user:localStorage.getItem("username")}
   }
 
   loadChat(id: string) {
+
     this.chatService.getChat(id);
   }
 

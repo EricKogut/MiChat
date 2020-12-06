@@ -1,12 +1,23 @@
 textarea {
   position: fixed;
-  width: calc(100% - 235px);
-  height: 100%;
+  width: calc(100%);
   right: 0;
-  top: 0;
+  bottom: 0;
   font-size: 18pt;
   padding-top: 20px;
   resize: none;
   border: none;
   padding: 20px  0px  20px  15px;
 }
+.submit {
+  position: fixed;
+  width: calc(10%);
+  right: 10px;
+  bottom: 10px;
+  font-size: 18pt;
+  padding-top: 20px;
+  resize: none;
+  border: none;
+  padding: 20px  0px  20px  15px;
+}
+

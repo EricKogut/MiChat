@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+
 import {environment} from "../../environment"
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 const config: SocketIoConfig = { url: environment.socket_url, options: {} };
@@ -34,6 +36,7 @@ const myRoutes: Routes =  [
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     //Sending connection to socket server as soon as the file is loaded
     SocketIoModule.forRoot(config),
     AppRoutingModule,
