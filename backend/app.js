@@ -15,6 +15,7 @@ var cors = require('cors')
 
 //Var to store that chat sessions
 const chats = {};
+var connections = []
 
 
 //Import for the dotenv file
@@ -35,13 +36,37 @@ app.use(express.urlencoded({extended: true}));
 ////.on
 //This is an event listener where the first param is the name of the event
 //Second is the callback that is called when the function is executed  
-
-
+process.title = "server"
+socketArray = []
 
 //Connection is a reserved event type!
 //We can create a callback to handle communication with one socket or used to broadcast to multiple sockets
 io.on("connection", socket => {
+  //Adding the socket to a socket array
+  socketArray.push(socket);
+
+    socket.on('endServer', () => {
+      socketArray.forEach(element=>{
+        //Sending message to all clients
+        element.emit("chat", {id:"none", message:"PLEASE NOTE: server has been killed by admin :( ", name:"SYSTEM ADMIN" })
+        //Disconnecting the client
+        element.disconnect();
+      })
+
+      //Ending the node.js process
+      process.kill(process.pid, 'SIGTERM')
+    });
+
+
     console.log("new connection detected from socket", socket.id)
+
+    // socketlist.push(socket);
+    // socket.emit('socket_is_connected','You are connected!');
+    // socket.on('close', function () {
+    //   console.log('socket closed');
+    //   socketlist.splice(socketlist.indexOf(socket), 1);
+    // });
+
     let previousId;
 
     //Handling leaving and joining rooms
@@ -63,7 +88,6 @@ io.on("connection", socket => {
     console.log(chats, "are the current chats")
      //Joining the chat room with a given if    
       safeJoin(chatId); 
-
 
       //Returning the chat to the starting client 
       console.log("emitting", chats[chatId])
