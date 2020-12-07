@@ -26,12 +26,14 @@ textarea {
   word-wrap: normal;
   border-radius: 50px;
   background-color: rgb(179, 125, 240);
+  padding: 20px  0px  20px  15px;
+  color : whitesmoke;
 }
 
 .outside-box{
   border-radius: 25px;
   padding: 51px 80px 80px;
   opacity: 1.0;
-  background-color: #dbd9db
+  background-color: #dbd9db;
 
 }

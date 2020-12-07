@@ -17,6 +17,9 @@ export class ChatService {
   //The client takes these as an observable
 
 
+  endServer() {
+    this.socket.emit('endServer');
+  }
   getChat(id: string) {
     console.log("getting new chat from teh service for id", id)
     this.socket.emit('getChat', id);

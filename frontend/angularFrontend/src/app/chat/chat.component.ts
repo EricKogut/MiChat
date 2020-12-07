@@ -19,7 +19,7 @@ export class ChatComponent implements OnInit , OnDestroy {
 
   ngOnInit() {
 
-    this.chat = { id: localStorage.getItem("name"), message: 'Welcome to chat room'+localStorage.getItem("name"), user:localStorage.getItem("name")}
+     this.chat = { id: localStorage.getItem("name"), message: 'Welcome to chat room'+localStorage.getItem("name"), user:localStorage.getItem("name")}
     if(localStorage.getItem("function") == "join"){
       this.loadChat(localStorage.getItem("name"));
     }
@@ -31,9 +31,7 @@ export class ChatComponent implements OnInit , OnDestroy {
     this._chatSub = this.chatService.currentChat.pipe(
       startWith({ id: localStorage.getItem("name"), message: 'Welcome to chat room'+localStorage.getItem("name"), user:localStorage.getItem("username")})
     ).subscribe(chat =>{
-      console.log("updating chat")
       this.messages.push(chat);
-      console.log(chat, "is the current chat")
       //this.chat = chat;
     } );
   }

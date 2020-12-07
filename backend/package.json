@@ -4,7 +4,8 @@
     "description": "my first socket.io app",
     "scripts": {
         "start": "nodemon app.js",
-        "ng": "ng"
+        "ng": "ng",
+        "stop": "node app.end.js"
     },
     "dependencies": {
         "cors": "^2.8.5",
