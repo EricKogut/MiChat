@@ -25,10 +25,6 @@ export class ChatService {
     this.socket.emit('getChat', id);
   }
 
-  newChat() {
-    console.log("creating new chat from teh service")
-    this.socket.emit('addChat', { id: this.chatId(), chat: '' });
-  }
   newChatName(input) {
     console.log("creating new chat from teh service", input)
     this.socket.emit('addChat', { id: input, chat: '' });
@@ -40,17 +36,5 @@ export class ChatService {
   }
 
 
-  //Generates a random document id
-  private chatId() {
 
-    let text = '';
-    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-    for (let i = 0; i < 5; i++) {
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-
-    console.log("Created chat id with id",text)
-    return text;
-  }
 }

@@ -32,6 +32,11 @@ export class ChatComponent implements OnInit , OnDestroy {
       startWith({ id: localStorage.getItem("name"), message: 'Welcome to chat room'+localStorage.getItem("name"), user:localStorage.getItem("username")})
     ).subscribe(chat =>{
       this.messages.push(chat);
+      if(chat.id =="none"){
+        window.alert("Chat session has been ended, goodbye.")
+        setTimeout(() => { window.close();; }, 10000);
+
+      }
       //this.chat = chat;
     } );
   }
