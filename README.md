@@ -1,3 +1,3 @@
 # MiChat
 
-![image](images/logo.png)
+![](images/logo.png)
